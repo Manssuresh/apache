@@ -11,8 +11,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                zip -r index.zip *
-                aws s3 cp  index.zip s3://artifactory-bucket-kpkm/
+                zip -r index-$BUILD_NUMBER.zip index.html
+                aws s3 cp  index-$BUILD_NUMBER.zip s3://artifactory-bucket-kpkm/
             }
         }
 
@@ -20,8 +20,8 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 rm -fr *
-                aws s3 cp s3://artifactory-bucket-kpkm/index.zip .
-                unzip index.zip
+                aws s3 cp s3://artifactory-bucket-kpkm/index-$BUILD_NUMBER.zip .
+                unzip index-$BUILD_NUMBER.zip
                 scp index.html root@172.31.1.135:/var/www/html/
 
             }
