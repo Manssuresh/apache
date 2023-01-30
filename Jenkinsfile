@@ -27,10 +27,10 @@ pipeline {
             }
         }
     }
-            stage('Test') {
-            steps {
-                echo 'Testing..'
-                curl -I http://43.207.31.99/
-            }
-        }
+        //     stage('Test') {
+        //     steps {
+        //         echo 'Testing..'
+        //         curl -I http://43.207.31.99/
+        //     }
+        // }
 }
