@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Cloning..'
-               git clone git@github.com:Manssuresh/apache.git
+                git clone git@github.com:Manssuresh/apache.git
             }
         }
         stage('Build') {
